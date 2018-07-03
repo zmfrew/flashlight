@@ -57,11 +57,19 @@
 				B60B99BE20EAD5D400FE6655 /* AppDelegate.swift */,
 				B60B99C020EAD5D400FE6655 /* ViewController.swift */,
 				B60B99C220EAD5D400FE6655 /* Main.storyboard */,
+				B60B99D020EAD5E600FE6655 /* Resources */,
+			);
+			path = Flashlight;
+			sourceTree = "<group>";
+		};
+		B60B99D020EAD5E600FE6655 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				B60B99C520EAD5D500FE6655 /* Assets.xcassets */,
 				B60B99C720EAD5D500FE6655 /* LaunchScreen.storyboard */,
 				B60B99CA20EAD5D500FE6655 /* Info.plist */,
 			);
-			path = Flashlight;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,7 +290,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PKK87S6JNY;
-				INFOPLIST_FILE = Flashlight/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Flashlight/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +308,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PKK87S6JNY;
-				INFOPLIST_FILE = Flashlight/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Flashlight/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
