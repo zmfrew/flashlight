@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -34,12 +35,16 @@ class ViewController: UIViewController {
                 buttonText.setTitle("Off", for: .normal)
                 buttonText.setTitleColor(UIColor.black, for: .normal)
                 isOn = true
+                toggleFlashLight()
+                toggleStatusBar()
                 
             case .left:
                 view.backgroundColor = UIColor.black
                 buttonText.setTitle("On", for: .normal)
                 buttonText.setTitleColor(UIColor.white, for: .normal)
                 isOn = false
+                toggleFlashLight()
+                toggleStatusBar()
                 
             default:
                 break
@@ -54,11 +59,45 @@ class ViewController: UIViewController {
             buttonText.setTitle("Off", for: .normal)
             buttonText.setTitleColor(UIColor.black, for: .normal)
             isOn = true
+            toggleFlashLight()
+            toggleStatusBar()
         } else if isOn == true {
             view.backgroundColor = UIColor.black
             buttonText.setTitle("On", for: .normal)
             buttonText.setTitleColor(UIColor.white, for: .normal)
             isOn = false
+            toggleFlashLight()
+            toggleStatusBar()
+        }
+    }
+    
+    func toggleFlashLight() {
+        let device = AVCaptureDevice.default(for: AVMediaType.video)
+        if let device = device, device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                if (device.torchMode == AVCaptureDevice.TorchMode.on) {
+                    device.torchMode = AVCaptureDevice.TorchMode.off
+                } else {
+                    do {
+                        try device.setTorchModeOn(level: 1.0)
+                    } catch {
+                        print(error)
+                    }
+                }
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func toggleStatusBar() {
+        var statusBarStyle = UIStatusBarStyle.default
+        if statusBarStyle == .default {
+            statusBarStyle = .lightContent
+        } else {
+            statusBarStyle = .default
         }
     }
 
